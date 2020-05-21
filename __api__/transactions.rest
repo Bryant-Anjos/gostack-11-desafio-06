@@ -1,0 +1,32 @@
+@url = http://localhost:3333/transactions
+
+{{url}}
+
+###
+POST {{url}}
+Content-Type: application/json
+
+{
+  "title": "Salário",
+  "value": 50,
+  "type": "outcome",
+  "category": "abcd"
+}
+
+###
+DELETE  {{url}}/b35e0868-a617-4b84-9e2a-50088d975356
+
+###
+POST {{url}}/import
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="import_template.csv"
+Content-Type: text/csv
+
+< ../src/__tests__/import_template.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
